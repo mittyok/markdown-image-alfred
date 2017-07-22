@@ -56,6 +56,10 @@ def process():
         # tiff --> png
         _convert_to_png(img_path, new_img_path)
         img_path = new_img_path
+    else:
+        new_img_path = '/tmp/{}-{}.{}'.format(file_name, int(time.time()), file_type)
+        os.system('cp {} {}'.format(img_path, new_img_path))
+        img_path = new_img_path
 
     # 获取图片尺寸
     # width, height = _get_img_size(img_path)
@@ -70,7 +74,7 @@ def process():
 
         # 完整的七牛图片URI
         img_file_name = os.path.split(img_path)[-1]
-        img_uri = '{}/{}'.format(URI_PREFIX, img_file_name)
+        img_uri = '{}/{}'.format(URI_PREFIX, img_file_name, time.time())
 
         notice('上传成功!')
     except Exception as error:
