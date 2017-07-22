@@ -74,7 +74,7 @@ def process():
 
         # 完整的七牛图片URI
         img_file_name = os.path.split(img_path)[-1]
-        img_uri = '{}/{}'.format(URI_PREFIX, img_file_name, time.time())
+        img_uri = '{}/{}'.format(URI_PREFIX, img_file_name)
 
         notice('上传成功!')
     except Exception as error:
